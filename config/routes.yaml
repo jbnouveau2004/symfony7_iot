@@ -14,3 +14,8 @@ controllers:
 home:
   path: /
   controller: App\Controller\HomeController::index
+
+admin:
+    path: /admin/
+    controller: App\Controller\Admin\AdminController::home
+    methods: GET|POST
