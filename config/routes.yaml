@@ -59,3 +59,7 @@ utilisateurs_delete:
     path: /admin/utlisateurs_delete{id}
     controller: App\Controller\Admin\AdminController::utilisateurs_delete
     methods: GET|POST|DELETE
+
+
+api_login_check:
+    path: /api/login_check
