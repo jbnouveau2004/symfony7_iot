@@ -31,7 +31,8 @@ class PicoController extends AbstractController
                 'headers' => [
                     'Authorization' => 'Bearer '.$this->getParameter('pico_token'),
                 ],
-                'timeout' => 3,
+            'timeout' => 10,
+            'max_duration' => 10,
                 'verify_peer' => false,
                 'verify_host' => false,
             ]);
@@ -65,7 +66,8 @@ class PicoController extends AbstractController
             'json' => [
                 'state' => true,
             ],
-            'timeout' => 3,
+            'timeout' => 10,
+            'max_duration' => 10,
             'verify_peer' => false,
             'verify_host' => false,
             ]);
@@ -96,7 +98,8 @@ class PicoController extends AbstractController
             'headers' => [
                 'Authorization' => 'Bearer '.$this->getParameter('pico_token'),
             ],
-            'timeout' => 3,
+            'timeout' => 10,
+            'max_duration' => 10,
             'verify_peer' => false,
             'verify_host' => false,
             ]);
@@ -134,7 +137,8 @@ class PicoController extends AbstractController
                 'Authorization' => 'Bearer '.$this->getParameter('pico_token'),
                 'X-PWM' => $pwm,
             ],
-            'timeout' => 3,
+            'timeout' => 10,
+            'max_duration' => 10,
             'verify_peer' => false,
             'verify_host' => false,
             ]);
