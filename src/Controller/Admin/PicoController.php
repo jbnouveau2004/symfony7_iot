@@ -33,8 +33,8 @@ class PicoController extends AbstractController
                 ],
             'timeout' => 10,
             'max_duration' => 10,
-                'verify_peer' => false,
-                'verify_host' => false,
+            'verify_peer' => false,
+            'verify_host' => false,
             ]);
 
             $content = $response->getContent(false);

@@ -13,22 +13,26 @@
     <div id="vanne1"></div>
     </p>
 
+    {% if is_granted('ROLE_USER') %}                  
     <p>
     <div class="titre">Vanne 2</div>
     <div id="vanne2"></div>
     <button id="btn-envoyerVanne2" class="btn btn-danger">Changer l'état de la vanne 2</button>
     </p>
+    {% endif %}
 
     <p>
     <div class="titre">Tension d'entrée</div>
     <div id="voltage"></div>
     </p>
 
+    {% if is_granted('ROLE_USER') %} 
     <p>
     <div class="titre">Tension de sortie</div>
     <input id="input" type="range" min="0" max="3.3" step="0.1" />
     <p>Valeur&nbsp;: <output id="value"></output></p>
     </p>
+    {% endif %}
 
 </div>
 

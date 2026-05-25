@@ -32,9 +32,11 @@ security:
             # switch_user: true
 
     role_hierarchy:
-        ROLE_ADMIN: ['ROLE_USER']
+        ROLE_ADMIN: ['ROLE_USER', 'ROLE_INVITE']
+        ROLE_USER: ['ROLE_INVITE']
 
     access_control:
+        - { path: ^/admin, roles: ROLE_INVITE, methods: [GET] }
         - { path: ^/admin, roles: ROLE_USER }
     # Note: Only the *first* matching rule is applied
     #access_control:

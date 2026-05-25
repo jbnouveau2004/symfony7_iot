@@ -17,6 +17,7 @@ class AdminType extends AbstractType
             ->add('username')
             ->add('roles', ChoiceType::class, [
                 'choices' => [
+                'Invité' => 'ROLE_INVITE',
                 'Utilisateur' => 'ROLE_USER',
                 'Administrateur' => 'ROLE_ADMIN',
                 ],
