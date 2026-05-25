@@ -1,0 +1,51 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Connexion!{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+
+        <form method="post">
+            {% if error %}
+                {% if error.messageKey|trans(error.messageData, 'security') == "Invalid credentials." %}
+                    {% set erreur = "Identifiants invalides" %}
+                {% else %}
+                    {% set erreur = error.messageKey|trans(error.messageData, 'security') %}
+            {% endif %}
+
+
+                <div class="alert alert-danger">{{ erreur }}</div>
+            {% endif %}
+
+            {% if app.user %}
+                <div class="mb-3">
+                    Vous êtes connecté à {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
+                </div>
+            {% endif %}
+
+            <h3>Page de connexion</h3>
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <label for="inputUsername">Nom d'utilisateur</label>
+                    <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
+                </div>
+            <div>
+            <div class="row mt-4 mb-4">
+                <div class="col-md-4">
+                    <label for="inputPassword">Mot de passe</label>
+                    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+                </div>
+            </div>
+
+            <input type="hidden" name="_csrf_token"
+                value="{{ csrf_token('authenticate') }}"
+                class="mt-2"
+            >
+
+            <button class="btn btn-primary" type="submit">
+                Connexion
+            </button>
+        </form>
+        <a href="{{ path('accueil')}}"><div class="btn btn-warning">Annuler</div></a>
+    </div>
+{% endblock %}

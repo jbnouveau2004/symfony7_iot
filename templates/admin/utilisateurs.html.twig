@@ -1,0 +1,48 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block body %}
+
+<div class="container mt-4">
+
+<h3>Gestion des utilisateurs</h3>
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">{{message}}</div>
+    {% endfor %}
+
+    <table class="table table-striped">
+        <thead>
+        </thead>
+        <tbody>
+            {% for utilisateur in utilisateurs %}
+            <tr>
+                <td>{{utilisateur.username}}</td>
+                <td>
+                {% if utilisateur.username == 'admin' %}
+                    {% if is_granted('ROLE_ADMIN') and admin == 'admin' %}
+                        <a href="{{path('utilisateurs_edit', {id: utilisateur.id})}}" class="btn btn-secondary">Editer</a>
+                    {% endif %}
+                    {% else %}
+                        <a href="{{path('utilisateurs_edit', {id: utilisateur.id})}}" class="btn btn-secondary">Editer</a>
+                    {% endif %}
+                {% if utilisateur.username != 'admin' %}
+                    <form method="post" action="{{ path('utilisateurs_delete', {id: utilisateur.id})}}" style="display:inline-block" onsubmit="return confirm('Etes vous vraiment sûr?')">
+		    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ utilisateur.id)}}">
+                    <button class="btn btn-danger">Supprimer</button>
+                    </form>
+                {% endif %}
+                </td>
+            </tr>
+            {% endfor%}
+        </tbody>
+    </table>
+
+
+    <div class="text-right">
+        <a href="{{path('utilisateurs_new')}}" class="btn btn-primary">Créer un nouvel utilisateur</a>
+    </div>
+
+</div>
+
+{% endblock %}

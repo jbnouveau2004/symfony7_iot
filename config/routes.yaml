@@ -11,11 +11,51 @@ controllers:
     resource: routing.controllers
 
 
-home:
+accueil:
   path: /
   controller: App\Controller\HomeController::index
 
-admin:
-    path: /admin/
-    controller: App\Controller\Admin\AdminController::home
+admin_infos:
+    path: /admin/infos
+    controller: App\Controller\Admin\AdminController::infos
     methods: GET|POST
+
+admin_guide:
+    path: /admin/guide
+    controller: App\Controller\Admin\AdminController::guide
+    methods: GET|POST
+
+admin_home:
+    path: /admin/
+    controller: App\Controller\Admin\AdminController::admin_home
+    methods: GET|POST
+
+app_login:
+    path: /login/
+    controller: App\Controller\SecurityController::login
+    methods: GET|POST
+
+app_logout:
+    path: /logout/
+    controller: App\Controller\SecurityController::logout
+    methods: GET|POST
+
+utilisateurs:
+    path: /admin/utilisateurs
+    controller: App\Controller\Admin\AdminController::utilisateurs
+    methods: GET|POST
+
+utilisateurs_new:
+    path: /admin/utilisateurs_new
+    controller: App\Controller\Admin\AdminController::utilisateurs_new
+    methods: GET|POST
+
+utilisateurs_edit:
+    path: /admin/utlisateurs_edit{id}
+    controller: App\Controller\Admin\AdminController::utilisateurs_edit
+    methods: GET|POST
+
+utilisateurs_delete:
+    path: /admin/utlisateurs_delete{id}
+    controller: App\Controller\Admin\AdminController::utilisateurs_delete
+    methods: GET|POST|DELETE

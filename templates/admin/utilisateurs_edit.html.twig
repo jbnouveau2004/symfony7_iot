@@ -1,0 +1,41 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block body %}
+
+
+<div class="container mt-4">
+<h3>Modifier un utilisateur</h3>
+
+    {{ form_start(form, {'attr': {'id': 'new_edit_utilisateur'}}) }}
+    {{ form_start(form, {'attr': {'id': 'new_edit_utilisateur'}}) }}
+        {% if utilisateurs.username == 'admin' %}
+        <div class="row">
+            <div class="col-md-4">{{form_row(form.username, {'label': ' ', 'id': 'cacher'})}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">{{form_row(form.roles, {'label': ' ', 'id': 'cacher'})}}</div>
+        </div>
+        {% else %}
+        <div class="row">
+            <div class="col-md-4">{{form_row(form.username, {'label': 'Nom d\'utilisateur'})}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">{{form_row(form.roles)}}</div>
+        </div>
+        {% endif %}
+        <div class="row">
+            <div class="col-md-12">{{form_row(form.password, {'label': 'Mot de passe', 'id': 'utilisateur_password'})}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <label for="verifpass">Retapez le mot de passe</label>
+                <input type="password" id="verifpass" required>
+            </div>
+        </div>
+        {{ form_widget(form) }}
+            <button class="btn btn-primary">Modifier</button>
+    {{ form_end(form) }}
+
+</div>
+
+{% endblock %}

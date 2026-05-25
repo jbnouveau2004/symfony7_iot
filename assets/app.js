@@ -8,3 +8,11 @@
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.css';
 import 'bootstrap';
+
+$("#new_edit_utilisateur").on('submit', function(){
+    if($("#utilisateur_password").val() != $("#verifpass").val()) {
+        alert("Les deux mots de passe saisies sont différents");
+        alert("Merci de renouveler l'opération");
+        return false;
+    }
+})
