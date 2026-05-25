@@ -1,6 +1,21 @@
 <h1>Projet 2</h1>
 
 <pre>
+Gestionnaire utilisateur
+API
+JWT
+etc...
+</pre>
+
+<h1>Projet 3</h1>
+
+<pre>
+
+Route (méthode POST):
+https:/localhost:8000/admin/pico/status
+https:/localhost:8000/admin/pico/vanne2/on
+https:/localhost:8000/admin/pico/voltage
+
 
 Typescript (Angular):
 this.http.post(
