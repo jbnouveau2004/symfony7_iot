@@ -12,9 +12,9 @@ etc...
 <pre>
 
 Route (méthode POST):
-https:/localhost:8000/admin/pico/status
-https:/localhost:8000/admin/pico/vanne2/on
-https:/localhost:8000/admin/pico/voltage
+https://localhost:8000/admin/pico/status
+https://localhost:8000/admin/pico/vanne2/on
+https://localhost:8000/admin/pico/voltage
 
 
 Typescript (Angular):
