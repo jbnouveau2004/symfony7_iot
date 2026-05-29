@@ -12,28 +12,9 @@ etc...
 <pre>
 
 Route (méthode POST):
-https://localhost:8000/admin/pico/status
-https://localhost:8000/admin/pico/vanne2/on
-https://localhost:8000/admin/pico/voltage
+https://localhost:8000/api/pico/status
+https://localhost:8000/api/pico/vanne2/on
+https://localhost:8000/api/pico/pwm
 
-
-Typescript (Angular):
-this.http.post(
-  'https://ton-site.fr/api/admin/pico/status',
-  {
-    vanne: 2,
-    etat: true
-  },
-  {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
-  }
-).subscribe(response =&gt; {
-  console.log(response);
-});
-
-
-enlever vanne et état pour status sinon les laisser
 
 </pre>

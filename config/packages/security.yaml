@@ -23,7 +23,7 @@ security:
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
 
         api:
-            pattern: ^/pico
+            pattern: ^/api
             stateless: true
             jwt: ~
 
@@ -51,10 +51,11 @@ security:
         ROLE_USER: ['ROLE_INVITE']
 
     access_control:
+        - { path: ^/api, roles: PUBLIC_ACCESS, methods: [OPTIONS] }
         - { path: ^/api/login_check, roles: PUBLIC_ACCESS }
         - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
 
-        - { path: ^/admin, roles: ROLE_INVITE, methods: [GET, OPTIONS] }
+        - { path: ^/admin, roles: ROLE_INVITE, methods: [OPTIONS] }
         - { path: ^/admin, roles: ROLE_USER }
     # Note: Only the *first* matching rule is applied
     #access_control:
