@@ -29,10 +29,11 @@ class PicoController extends AbstractController
         try {
             $response = $client->request('POST', $this->getParameter('pico_url').'/status', [
                 'headers' => [
+                    'Connection' => 'close',
                     'Authorization' => 'Bearer '.$this->getParameter('pico_token'),
                 ],
-            'timeout' => 10,
-            'max_duration' => 10,
+            'timeout' => 3,
+            'max_duration' => 5,
             'verify_peer' => false,
             'verify_host' => false,
             ]);
@@ -46,10 +47,9 @@ class PicoController extends AbstractController
 
         } catch (\Throwable $e) {
             return new JsonResponse([
-                'error' => $e->getMessage(),
-                'file' => $e->getFile(),
-                'line' => $e->getLine(),
-            ], 500);
+                'error' => 'Pico indisponible',
+                'details' => $e->getMessage(),
+            ], 503);
         }
     }
 
@@ -61,13 +61,14 @@ class PicoController extends AbstractController
         try {
             $response = $client->request('POST', $this->getParameter('pico_url').'/togglevanne2', [
             'headers' => [
+                'Connection' => 'close',
                 'Authorization' => 'Bearer '.$this->getParameter('pico_token'),
             ],
             'json' => [
                 'state' => true,
             ],
-            'timeout' => 10,
-            'max_duration' => 10,
+            'timeout' => 3,
+            'max_duration' => 5,
             'verify_peer' => false,
             'verify_host' => false,
             ]);
@@ -80,10 +81,9 @@ class PicoController extends AbstractController
 
         } catch (\Throwable $e) {
             return new JsonResponse([
-                'error' => $e->getMessage(),
-                'file' => $e->getFile(),
-                'line' => $e->getLine(),
-            ], 500);
+                'error' => 'Pico indisponible',
+                'details' => $e->getMessage(),
+            ], 503);
         }
 
     }
@@ -96,10 +96,11 @@ class PicoController extends AbstractController
         try {
             $response = $client->request('POST', $this->getParameter('pico_url').'/voltage', [
             'headers' => [
+                'Connection' => 'close',
                 'Authorization' => 'Bearer '.$this->getParameter('pico_token'),
             ],
-            'timeout' => 10,
-            'max_duration' => 10,
+            'timeout' => 3,
+            'max_duration' => 5,
             'verify_peer' => false,
             'verify_host' => false,
             ]);
@@ -112,10 +113,9 @@ class PicoController extends AbstractController
 
         } catch (\Throwable $e) {
             return new JsonResponse([
-                'error' => $e->getMessage(),
-                'file' => $e->getFile(),
-                'line' => $e->getLine(),
-            ], 500);
+                'error' => 'Pico indisponible',
+                'details' => $e->getMessage(),
+            ], 503);
         }
     }
 
@@ -134,11 +134,12 @@ class PicoController extends AbstractController
 
             $response = $client->request('POST', $this->getParameter('pico_url').'/pwm', [
             'headers' => [
+                'Connection' => 'close',
                 'Authorization' => 'Bearer '.$this->getParameter('pico_token'),
                 'X-PWM' => $pwm,
             ],
-            'timeout' => 10,
-            'max_duration' => 10,
+            'timeout' => 3,
+            'max_duration' => 5,
             'verify_peer' => false,
             'verify_host' => false,
             ]);
@@ -151,10 +152,9 @@ class PicoController extends AbstractController
 
         } catch (\Throwable $e) {
             return new JsonResponse([
-                'error' => $e->getMessage(),
-                'file' => $e->getFile(),
-                'line' => $e->getLine(),
-            ], 500);
+                'error' => 'Pico indisponible',
+                'details' => $e->getMessage(),
+            ], 503);
         }
     }
 
