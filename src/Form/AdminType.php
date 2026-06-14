@@ -9,6 +9,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
+use Symfony\Component\Form\CallbackTransformer;
+
 class AdminType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -17,18 +19,23 @@ class AdminType extends AbstractType
             ->add('username')
             ->add('roles', ChoiceType::class, [
                 'choices' => [
-                'Invité' => 'ROLE_INVITE',
-                'Utilisateur' => 'ROLE_USER',
                 'Administrateur' => 'ROLE_ADMIN',
-                ],
-                'multiple' => true,
-                'expanded' => true,
-])
+                'Utilisateur' => 'ROLE_USER',
+                'Invité' => 'ROLE_INVITE',
+       ],
+    ])
+            ->add('password', PasswordType::class);
 
-            ->add('password', PasswordType::class)
+        $builder->get('roles')->addModelTransformer(new CallbackTransformer(
+            function ($rolesAsArray) {
+                return count($rolesAsArray) ? $rolesAsArray[0] : null;
+            },
+            function ($rolesAsString) {
+                return [$rolesAsString];
+            }
+        ));
 
             
-        ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
